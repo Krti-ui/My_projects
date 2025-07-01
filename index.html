@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Personal Website showcasing my talents and portfolio.">
+<meta name="keywords" content="Personal Website, portfolio, talents, skills, contact">
+<meta name="author" content="Krti Koumar">
+<title>Krti - Personal Website</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    /* Your existing CSS styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Montserrat', sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        background-image: url('https://cdn.pixabay.com/photo/2018/08/14/13/23/ocean-3605547_1280.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: scroll;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background-color: transparent;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    header.scrolled {
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    header img {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px;
+        width: 80px;
+    }
+
+    nav {
+        position: absolute;
+        right: 60px;
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+
+    nav a {
+        color: #ffffff;
+        font-size: 1.0em;
+        text-decoration: none;
+        padding: 5px 10px;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    header.scrolled nav a {
+        color: #000000;
+    }
+
+    nav a::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border: 2px solid transparent;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        z-index: -1;
+    }
+
+    nav a:hover::before {
+        border-color: white;
+    }
+
+    nav a i {
+        font-size: 1.5em;
+        vertical-align: middle;
+        color: #ffffff;
+        transition: color 0.3s ease;
+    }
+
+    header.scrolled nav a i {
+        color: #000000;
+    }
+
+    nav a:nth-child(5):hover i {
+        color: #0077b5;
+    }
+
+    nav a:nth-child(6):hover i {
+        color: #d44638;
+    }
+
+    /* Hero Section Styles */
+    .hero {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-image: url('https://cdn.pixabay.com/photo/2018/08/14/13/23/ocean-3605547_1280.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        color: #fff;
+    }
+
+    .hero-content h1 {
+        font-size: 4em;
+        font-family: 'Oswald', sans-serif;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* About Section Styles */
+    #about {
+        padding: 100px 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        z-index: 1;
+    }
+
+    .content-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .main-content {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 2.5em;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .extra-content {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 400;
+        font-size: 1.2em;
+        color: #555;
+        line-height: 1.6;
+    }
+
+    /* Talents Section Styles */
+    #talent {
+        padding: 80px 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        text-align:center;
+    }
+
+    .talent-boxes {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        flex-wrap: wrap;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .talent-box {
+        width: calc(33.33% - 20px);
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+        transition: transform 0.3s ease;
+    }
+
+    .talent-box img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+    }
+
+    .talent-box h3 {
+        font-size: 1.6em;
+        color: #333;
+        margin: 15px 0;
+    }
+
+    .talent-description {
+        font-size: 1.1em;
+        color: #555;
+        margin-bottom: 15px;
+    }
+
+    .learn-more-btn {
+        background-color: #0077b5;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 1em;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .learn-more-btn:hover {
+        background-color: #005f87;
+    }
+
+    .talent-box:hover {
+        transform: translateY(-10px);
+    }
+
+    .talent-box img:hover {
+        transform: scale(1.05);
+    }
+
+    .more-info {
+        margin-top: 10px;
+        font-size: 1.1em;
+        color: #444;
+        line-height: 1.6;
+        display: none;
+    }
+
+    /* Footer Styles */
+    footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    footer p {
+        margin: 0;
+        font-size: 0.9em;
+    }
+
+    footer a {
+        color: #f39c12;
+        text-decoration: none;
+    }
+
+    footer a:hover {
+        color: #e67e22;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .talent-box {
+            width: 100%;
+        }
+    }
+#contact {
+    padding: 100px 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.contact-links a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #0077b5;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+.contact-links a:hover {
+    color: #005f87;
+}
+
+.contact-links a i {
+    font-size: 1.5em;
+}
+
+/* Portfolio Section Styles */
+#portfolio {
+    padding: 100px 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.portfolio-projects {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.project {
+    width: calc(33.33% - 20px);
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.project img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.project h3 {
+    font-size: 1.6em;
+    color: #333;
+    margin: 15px 0;
+}
+
+.project-description {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.learn-more-btn {
+    background-color: #0077b5;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.learn-more-btn:hover {
+    background-color: #005f87;
+}
+
+.more-info {
+    margin-top: 10px;
+    font-size: 1.1em;
+    color: #444;
+    line-height: 1.6;
+    display: none;
+}
+
+.project:hover {
+    transform: translateY(-10px);
+}
+
+.project img:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .project {
+        width: 100%;
+    }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <img src="C:\Users\DELL\OneDrive\Desktop\Website\Image\9e0dc62d21a177e61b5a69978c490689.png" alt="Logo">
+    <nav>
+        <a href="#about">About</a>
+        <a href="#talent">Talents</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+        <a href="https://www.linkedin.com/in/krti-koumar" target="_blank" aria-label="LinkedIn">
+            <i class="fa fa-linkedin"></i>
+        </a>
+        <a href="mailto:knightfrost005@gmail.com" aria-label="Gmail">
+            <i class="fa fa-envelope"></i>
+        </a>
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Krti Koumar</h1><br><br>
+        <p><center>Ethical Hacker | Programmer | Robotics Engineer</center></p>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about">
+    <div class="content-container">
+        <h2 class="main-content">About Me:</h2>
+        <p class="extra-content">
+            Hello! I'm Krti Koumar, a passionate individual with a love for creativity and innovation. 
+            As an aspiring entrepreneur and electronics engineer with a passion for robotics, VLSI and embedded system. Currently studying Electronics and Instrumentation Engineering at Puducherry Technological University. I'm driven by the desire to invent impactful solutions and push the boundaries of innovation. <br> Beyond academics, I actively engage in tech incubation and leadership, having worked with ATAL Incubation Centre to develop cutting-edge ideas like capacitive transducers. My journey is fueled by an eagerness to explore new technologies, whether it's programming or experimenting with real-time controllers.<br>
+       Previously serving as a class representative, I honed skills in team-managment, problem-solving, and strategic decision making, which I now channel into building my startup vision. I'm also a video editor, a member of my university's Design Club, and someone who believes in blending technical prowess with creativity. <br> If your passionate about innovation, technology, or startup, let's connect!</p>
+    </div>
+</section>
+<hr>
+<!-- Talents Section -->
+<section id="talent">
+    <div class="content-container">
+        <h2 class="main-content">Talents:</h2>
+        <p><center>Time to showcase my Talents:</center></p><br>
+        <div class="talent-boxes">
+            <!-- Ethical Hacking -->
+            <div class="talent-box">
+                <img src="https://images.unsplash.com/photo-1564865878688-9a244444042a?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29kZXxlbnwwfHwwfHx8MA%3D%3D" alt="Ethical Hacking">
+                <h3>Ethical Hacking</h3>
+                <p class="talent-description">I specialize in identifying and fixing security vulnerabilities in systems and networks.</p>
+                <button class="learn-more-btn" onclick="toggleMoreInfo(1)">Learn More</button>
+                <p class="more-info" id="more-info-1">My Expertise in Wireless communications and Networking, capturing packets, survillance and securing personal computers</p>
+            </div>
+
+            <!-- Robotics -->
+            <div class="talent-box">
+                <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cm9ib3R8ZW58MHx8MHx8fDA%3D" alt="Robotics">
+                <h3>Robotics</h3>
+                <p class="talent-description">I design and build robots for industrial and educational purposes.</p><br>
+                <button class="learn-more-btn" onclick="toggleMoreInfo(2)">Learn More</button>
+                <p class="more-info" id="more-info-2">I have worked on projects involving autonomous robots, IoT integration, and real-time control systems using Arduino and Raspberry Pi.</p>
+            </div>
+
+            <!-- Programming -->
+            <div class="talent-box">
+                <img src="https://images.unsplash.com/photo-1619410283995-43d9134e7656?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZ3JhbW1pbmd8ZW58MHx8MHx8fDA%3D" alt="Programming">
+                <h3>Programming</h3>
+                <p class="talent-description">I am proficient in Python, C, and JavaScript for Web and Embedded Systems.</p>
+                <button class="learn-more-btn" onclick="toggleMoreInfo(3)">Learn More</button>
+                <p class="more-info" id="more-info-3">I specialize in Web development, Embedded Systems Programming, and more...</p>
+            </div>
+        </div>
+    </div>
+</section>
+<hr>
+<!-- Portfolio Section -->
+<section id="portfolio">
+    <div class="content-container">
+        <h2 class="main-content"><center>Portfolio:</center></h2>
+        <p><center>Time to Showcase my Projects:</center></p><br>
+        <div class="portfolio-projects">
+            <!-- Line Follower Robot -->
+            <div class="project">
+                <img src="https://a.pololu-files.com/picture/0J6326.1200.jpg?7dcc2093c9490035c5905bb53a9fc50a" alt="Line Follower Robot">
+                <h3>Line Follower Robot</h3>
+                <p class="project-description">A robot designed to follow a specific path using infrared sensors.</p>
+                <button class="learn-more-btn" onclick="toggleProjectInfo(1)">Learn More</button>
+                <div class="more-info" id="project-info-1">
+                    <p>This project involved designing and programming a robot to autonomously follow a black line on a white surface. It uses infrared sensors to detect the line and a PID controller for precise movement.</p>
+                    <ul>
+                        <li>Technologies: Arduino, IR Sensors, PID Control</li>
+                        <li>Skills: Embedded Systems, C++ Programming</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Personal RC Car -->
+            <div class="project">
+                <img src="https://i.ytimg.com/vi/D4j9IPlNvtA/maxresdefault.jpg" alt="Personal RC Car">
+                <h3>Personal RC Car</h3>
+                <p class="project-description">A remote-controlled car built from scratch using custom components.</p>
+                <button class="learn-more-btn" onclick="toggleProjectInfo(2)">Learn More</button>
+                <div class="more-info" id="project-info-2">
+                    <p>This RC car was built using a custom chassis, DC motors, and a wireless remote control system. It features real-time control and obstacle avoidance using ultrasonic sensors.</p>
+                    <ul>
+                        <li>Technologies: Arduino, DC Motors, Ultrasonic Sensors</li>
+                        <li>Skills: Circuit Design, Wireless Communication</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mechanical Hand -->
+            <div class="project">
+                <img src="https://openbionics.com/wp-content/uploads/2024/05/IMG_9088-2.heic-1024x748.jpg" alt="Mechanical Hand">
+                <h3>Mechanical Hand</h3>
+                <p class="project-description">A robotic hand capable of mimicking human hand movements.</p>
+                <button class="learn-more-btn" onclick="toggleProjectInfo(3)">Learn More</button>
+                <div class="more-info" id="project-info-3">
+                    <p>This project involved designing a mechanical hand with 3D-printed parts and servo motors. It can be controlled using a glove with flex sensors or a remote interface.</p>
+                    <ul>
+                        <li>Technologies: 3D Printing, Servo Motors, Flex Sensors</li>
+                        <li>Skills: Robotics, 3D Modeling</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<hr>
+<section id="contact">
+    <div class="content-container">
+        <h2 class="main-content">Contact Me:</h2>
+        <p>
+            Feel free to reach out to me via the following platforms:
+        </p>
+        <div class="contact-links">
+            <a href="https://www.linkedin.com/in/" target="_blank" aria-label="LinkedIn">
+                <i class="fa fa-linkedin"></i> LinkedIn
+            </a>
+            <a href="mailto:" aria-label="Gmail">
+                <i class="fa fa-envelope"></i> Gmail
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<footer>
+    <p>&copy; 2025 Krti Koumar. | <a href="#privacy-policy">Privacy Policy</a></p>
+</footer>
+
+<script>
+    // Add a scroll event listener
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('header');
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
+    // JavaScript to toggle "Learn More" info
+    function toggleMoreInfo(talentId) {
+        const info = document.getElementById(`more-info-${talentId}`);
+        const isVisible = info.style.display === 'block';
+        info.style.display = isVisible ? 'none' : 'block';
+        const button = info.previousElementSibling;
+        button.textContent = isVisible ? 'Learn More' : 'Show Less';
+    }
+
+    // JavaScript to toggle project info
+    function toggleProjectInfo(projectId) {
+    const info = document.getElementById(`project-info-${projectId}`);
+    const isVisible = info.style.display === 'block';
+    info.style.display = isVisible ? 'none' : 'block';
+    const button = info.previousElementSibling;
+    button.textContent = isVisible ? 'Learn More' : 'Show Less';
+}
+</script>
+
+</body>
+</html>
